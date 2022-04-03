@@ -1,3 +1,12 @@
+@media only screen and (max-width: 600px) {
+  .buttons {
+    flex-direction: column-reverse;
+    #new-quote{
+      margin-bottom: 10px;
+    }
+  }
+}
+
 .App {
   text-align: center;
   #quote-box{
@@ -14,12 +23,28 @@
     font-size: calc(10px + 1vmin);
     text-align: end;
     }
-  #tweet-quote{
-    float: left;    
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+    #tweet-quote{
+      float: left;
+      border-radius: 10px;
+      padding: 10px;
+      color: white;  
+      text-decoration: none;  
+    }
+    #new-quote{
+      float: right;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
   }
-  #new-quote{
-    float: right;
-  }
+  
   .App-header {
     background-color: #282c34;
     min-height: 100vh;

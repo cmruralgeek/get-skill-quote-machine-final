@@ -1,16 +1,19 @@
 import './App.scss';
 import { useState } from 'react';
+import COLORS_ARRAY from "./colorsArray"
 
 function App() {
-  const [quote, setQuote] = useState("Three lefts make a right.")
+  const [quote, setQuote] = useState("Three lefts make a right.");
   const [author, setAuthor] = useState("Gallagher");
-  const [randNum, setRandNum] = useState(0)
+  /* const [randNum, setRandNum] = useState(0); */
+  const [accentColor, setAccentColor] = useState("#f50422");
 
   const genRandNum = () => {
     let randInt = Math.floor(quotesArr.length * Math.random());
-    setRandNum(randInt);
+    /* setRandNum(randInt); */
     setQuote(quotesArr[randInt].quote);
     setAuthor(quotesArr[randInt].author);
+    setAccentColor(COLORS_ARRAY[randInt]);
   }
 
   const quotesArr = [
@@ -43,12 +46,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div id="quote-box">
+      <header className="App-header" style={{backgroundColor: accentColor, color: accentColor}}>
+        <div id="quote-box" style={{color: accentColor}}>
         <p id="text"> "{quote}" </p>
         <p id="author"> ~{author} </p>
-        <a id="tweet-quote" href={encodeURI('http://www.twitter.com/intent/tweet? text=${quote} -${author}')}>Tweet Quote</a> 
-        <button id="new-quote" onClick={() => genRandNum()}>Generate A Random Quote</button>    
+        <div class="buttons">
+        <a id="tweet-quote" style={{backgroundColor: accentColor}} href={encodeURI('http://www.twitter.com/intent/tweet? text=${quote} ~${author}')}>Tweet Quote</a> 
+        <button id="new-quote" style={{backgroundColor: accentColor}} onClick={() => genRandNum()}>Generate A Random Quote</button>
+        </div>
       </div>
       </header>
     </div>
